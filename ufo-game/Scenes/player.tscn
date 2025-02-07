@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d37o6a6e82mki"]
+[gd_scene load_steps=21 format=3 uid="uid://d37o6a6e82mki"]
 
 [ext_resource type="Texture2D" uid="uid://bpfgak75oj3w2" path="res://Spritesheets/UFO Spritesheet.png" id="1_1exbh"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8gujy"]
@@ -7,6 +7,22 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucftr"]
 atlas = ExtResource("1_1exbh")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rawnb"]
+atlas = ExtResource("1_1exbh")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tle0q"]
+atlas = ExtResource("1_1exbh")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urhho"]
+atlas = ExtResource("1_1exbh")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61xwu"]
+atlas = ExtResource("1_1exbh")
+region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_os7vs"]
 atlas = ExtResource("1_1exbh")
@@ -28,6 +44,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rawnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tle0q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urhho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61xwu")
+}],
+"loop": true,
+"name": &"Flash",
 "speed": 5.0
 }, {
 "frames": [{
@@ -112,7 +145,6 @@ script = ExtResource("1_8gujy")
 sprite_frames = SubResource("SpriteFrames_2hwle")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.96189
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_7abtm")

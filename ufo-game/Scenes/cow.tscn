@@ -1,0 +1,107 @@
+[gd_scene load_steps=11 format=3 uid="uid://bcb5hhvyf5gfw"]
+
+[ext_resource type="Texture2D" uid="uid://dcofbbtknxvxt" path="res://Spritesheets/UFO Cow.png" id="1_ynwgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffev6"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eutrs"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2cp0"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oofty"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d5ag"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ksf6"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bejw"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ifo7i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffev6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eutrs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2cp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oofty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d5ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ksf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bejw")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q51xk"]
+size = Vector2(16, 13)
+
+[node name="Cow" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 10
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ifo7i")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.933973
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_q51xk")

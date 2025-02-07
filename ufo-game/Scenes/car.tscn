@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://bci2o8yvd3y4i"]
+
+[ext_resource type="Texture2D" uid="uid://g36hp4gojb1m" path="res://Spritesheets/UFO Car.png" id="1_wwprf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej61a"]
+atlas = ExtResource("1_wwprf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0or0"]
+atlas = ExtResource("1_wwprf")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qky5n"]
+atlas = ExtResource("1_wwprf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r46ge"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej61a")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0or0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qky5n")
+}],
+"loop": true,
+"name": &"Moving",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnbsv"]
+size = Vector2(31, 23)
+
+[node name="Car" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 14
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r46ge")
+animation = &"Moving"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.010801
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_bnbsv")

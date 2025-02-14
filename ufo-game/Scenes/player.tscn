@@ -1,7 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d37o6a6e82mki"]
+[gd_scene load_steps=22 format=3 uid="uid://d37o6a6e82mki"]
 
 [ext_resource type="Texture2D" uid="uid://bpfgak75oj3w2" path="res://Spritesheets/UFO Spritesheet.png" id="1_1exbh"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_8gujy"]
+[ext_resource type="Script" path="res://Scenes/beam.gd" id="3_ot2kf"]
 [ext_resource type="Texture2D" uid="uid://cl7d6iwsbehy7" path="res://Spritesheets/UFO Ray.png" id="3_qnust"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucftr"]
@@ -108,6 +109,11 @@ region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_m0uq1"]
 animations = [{
+"frames": [],
+"loop": true,
+"name": &"Empty",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_41arh")
@@ -150,13 +156,16 @@ autoplay = "Idle"
 shape = SubResource("CapsuleShape2D_7abtm")
 
 [node name="Beam" type="Area2D" parent="."]
+script = ExtResource("3_ot2kf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam"]
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_m0uq1")
-animation = &"Idle"
-frame_progress = 0.636466
+animation = &"Start"
+autoplay = "Start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam"]
 position = Vector2(0, 24)
 shape = SubResource("CapsuleShape2D_ntfx5")
+
+[connection signal="animation_finished" from="Beam/AnimatedSprite2D" to="Beam" method="_on_animated_sprite_2d_animation_finished"]

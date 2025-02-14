@@ -17,9 +17,9 @@ func _process(delta: float) -> void:
 	_spaceInput()
 	if isOn:
 		visible = true
+		collisionShape.disabled = false
 		if animatedSprite.animation == "Empty":
 			animatedSprite.play("Start")
-		collisionShape.disabled = false
 	else:
 		visible = false
 		animatedSprite.animation = "Empty"

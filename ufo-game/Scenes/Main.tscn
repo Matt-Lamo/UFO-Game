@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=10 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_ggc00"]
 [ext_resource type="PackedScene" uid="uid://bcb5hhvyf5gfw" path="res://Scenes/cow.tscn" id="2_1qlcx"]
 [ext_resource type="Texture2D" uid="uid://biht4vl1cs53t" path="res://Tilemaps/Foreground Tilesheet.png" id="2_kknfg"]
 [ext_resource type="PackedScene" uid="uid://d37o6a6e82mki" path="res://Scenes/player.tscn" id="2_yl81k"]
@@ -72,6 +73,7 @@ physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_6k568")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_ggc00")
 
 [node name="Background" type="TileMapLayer" parent="."]
 position = Vector2(72, 22)

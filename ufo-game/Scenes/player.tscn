@@ -156,6 +156,8 @@ autoplay = "Idle"
 shape = SubResource("CapsuleShape2D_7abtm")
 
 [node name="Beam" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("3_ot2kf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam"]
@@ -165,7 +167,9 @@ animation = &"Start"
 autoplay = "Start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam"]
+texture_filter = 1
 position = Vector2(0, 24)
 shape = SubResource("CapsuleShape2D_ntfx5")
 
+[connection signal="area_entered" from="Beam" to="." method="_on_beam_area_entered"]
 [connection signal="animation_finished" from="Beam/AnimatedSprite2D" to="Beam" method="_on_animated_sprite_2d_animation_finished"]

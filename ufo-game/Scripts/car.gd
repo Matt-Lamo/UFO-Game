@@ -1,5 +1,6 @@
 extends Area2D
 
+
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
 @export var speed = 100

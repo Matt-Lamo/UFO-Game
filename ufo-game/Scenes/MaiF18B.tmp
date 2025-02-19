@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=10 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
 [ext_resource type="PackedScene" uid="uid://bcb5hhvyf5gfw" path="res://Scenes/cow.tscn" id="2_1qlcx"]
 [ext_resource type="Texture2D" uid="uid://biht4vl1cs53t" path="res://Tilemaps/Foreground Tilesheet.png" id="2_kknfg"]
 [ext_resource type="PackedScene" uid="uid://d37o6a6e82mki" path="res://Scenes/player.tscn" id="2_yl81k"]
-[ext_resource type="PackedScene" uid="uid://i6xadqalsyek" path="res://Scenes/car.tscn" id="5_5h54n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84jwf"]
 texture = ExtResource("1_1blsr")
@@ -88,8 +87,6 @@ tile_set = SubResource("TileSet_b7n6c")
 
 [node name="Cow" parent="." instance=ExtResource("2_1qlcx")]
 position = Vector2(24, 10)
-
-[node name="Car" parent="." instance=ExtResource("5_5h54n")]
 
 [node name="Player" parent="." instance=ExtResource("2_yl81k")]
 position = Vector2(71, 15)

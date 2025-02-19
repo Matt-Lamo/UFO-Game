@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://i6xadqalsyek"]
+[gd_scene load_steps=8 format=3 uid="uid://i6xadqalsyek"]
 
+[ext_resource type="Script" path="res://Scripts/car.gd" id="1_re6s7"]
 [ext_resource type="Texture2D" uid="uid://g36hp4gojb1m" path="res://Spritesheets/UFO Car.png" id="1_wwprf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wxncw"]
@@ -39,7 +40,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2a86"]
 size = Vector2(31, 23)
 
-[node name="Area2D" type="Area2D"]
+[node name="Car" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_re6s7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dqh0x")
@@ -49,3 +53,6 @@ frame_progress = 0.444005
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3.5)
 shape = SubResource("RectangleShape2D_g2a86")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

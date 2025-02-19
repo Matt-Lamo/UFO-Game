@@ -6,6 +6,8 @@ var isOn = false
 
 func _ready() -> void:
 	isOn = false
+	monitorable = true
+	
 	
 func _spaceInput() -> void:
 	if Input.is_action_just_pressed("space"):
@@ -18,6 +20,8 @@ func _process(delta: float) -> void:
 	if isOn:
 		visible = true
 		collisionShape.disabled = false
+		collisionShape.visible = true
+		
 		if animatedSprite.animation == "Empty":
 			animatedSprite.play("Start")
 	else:

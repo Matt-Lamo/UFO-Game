@@ -140,9 +140,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ntfx5"]
-radius = 19.0
-height = 40.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4fgwa"]
+size = Vector2(33, 43)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_8gujy")
@@ -163,13 +162,13 @@ script = ExtResource("3_ot2kf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Beam"]
 position = Vector2(0, 24)
 sprite_frames = SubResource("SpriteFrames_m0uq1")
-animation = &"Start"
+animation = &"Idle"
 autoplay = "Start"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Beam"]
 texture_filter = 1
-position = Vector2(0, 24)
-shape = SubResource("CapsuleShape2D_ntfx5")
+position = Vector2(0.5, 26.5)
+shape = SubResource("RectangleShape2D_4fgwa")
 
 [connection signal="area_entered" from="Beam" to="." method="_on_beam_area_entered"]
 [connection signal="animation_finished" from="Beam/AnimatedSprite2D" to="Beam" method="_on_animated_sprite_2d_animation_finished"]

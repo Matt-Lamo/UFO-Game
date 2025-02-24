@@ -18,6 +18,6 @@ func _keepcount() -> void:
 	
 func _playmusic() ->void:
 	var loadedSong = load("res://Sounds/Music/UFO Game (3).wav")
-	$AudioStreamPlayer.stream = loadedSong
-	$AudioStreamPlayer.play()
+	asp.stream = loadedSong
+	asp.play()
 	

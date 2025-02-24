@@ -17,7 +17,7 @@ func _keepcount() -> void:
 	var carAbductCount = 0
 	
 func _playmusic() ->void:
-	var loadedSong = load("res://Sounds/Music/UFO Game (3).wav")
+	var loadedSong = load("res://Sounds/Music/UFO Game Looped Version.wav")
 	asp.stream = loadedSong
 	asp.play()
 	

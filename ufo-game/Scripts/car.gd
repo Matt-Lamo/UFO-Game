@@ -25,7 +25,9 @@ func detect_direction():
 func _process(delta: float) -> void:
 	if collected:
 		#PUT IN SIGNAL FOR UI UPDATING AND SCOREBOARD HERE
+		Global.collectedTable["Car"] += 1
 		print("COLLECTED")
+		print(Global.collectedTable)
 		queue_free()
 	if isAbducted:
 		if count !=0:

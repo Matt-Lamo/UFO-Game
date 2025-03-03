@@ -1,0 +1,128 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcb5hhvyf5gfw"]
+
+[ext_resource type="Script" path="res://Scripts/cow.gd" id="1_v0nf6"]
+[ext_resource type="Texture2D" uid="uid://dcofbbtknxvxt" path="res://Spritesheets/UFO Cow.png" id="1_ynwgu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66b6d"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7snf"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfx3x"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dqgj"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28cra"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7xy4"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iiyl0"]
+atlas = ExtResource("1_ynwgu")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ye44"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66b6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7snf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfx3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfx3x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dqgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28cra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7xy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iiyl0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a0x7"]
+size = Vector2(16, 13)
+
+[node name="Cow" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_v0nf6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5ye44")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 13
+frame_progress = 0.231136
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_8a0x7")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

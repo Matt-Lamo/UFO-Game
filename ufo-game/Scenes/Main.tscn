@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=22 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b4vcvvdhpu1wc" path="res://Spritesheets/Health bar background.png" id="8_qh2rc"]
 [ext_resource type="FontFile" uid="uid://but2p26ts2ej8" path="res://Fonts/upheavtt.ttf" id="9_dwsap"]
 [ext_resource type="Script" path="res://Scenes/timer_count.gd" id="10_evuky"]
+[ext_resource type="Texture2D" uid="uid://dl7usg724mw4k" path="res://Spritesheets/blackout.png" id="12_cnyxr"]
+[ext_resource type="Texture2D" uid="uid://tjwaeexpb82i" path="res://Spritesheets/restart.png" id="12_rfi6d"]
+[ext_resource type="Texture2D" uid="uid://dtc4yxmx25qk3" path="res://Spritesheets/quit.png" id="13_1fyps"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84jwf"]
 texture = ExtResource("1_1blsr")
@@ -105,6 +108,12 @@ font_size = 300
 outline_size = 120
 outline_color = Color(0.101961, 0.109804, 0.172549, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_kqgg0"]
+font = ExtResource("9_dwsap")
+font_size = 700
+outline_size = 280
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ggc00")
 
@@ -117,7 +126,7 @@ tile_set = SubResource("TileSet_2do82")
 
 [node name="Foreground" type="TileMapLayer" parent="."]
 position = Vector2(72, 22)
-tile_map_data = PackedByteArray("AADw//X/AAAAAAIAAADv//P/AAAAAAIAAADy/+//AAACAAIAAADu//D/AAACAAIAAADx//L/AAACAAIAAADw/+//AAAAAAIAAADz/+z/AAAAAAAAAADz/+v/AAAAAAAAAADz/+r/AAAAAAAAAAD3/+b/AAAAAAAAAAD5/+b/AAAAAAAAAAD4/+b/AAAAAAAAAAATAOb/AAAAAAAAAAAUAOb/AAAAAAAAAAAVAOb/AAAAAAAAAAAZAOr/AAAAAAAAAAAZAOv/AAAAAAAAAAAZAOz/AAAAAAAAAAD9/+P/AAAAAAIAAAD//+X/AAAAAAIAAAADAOP/AAAAAAIAAAAFAOH/AAAAAAIAAAAJAOX/AAAAAAIAAAABAOP/AAACAAIAAAAFAOX/AAACAAIAAAAHAOP/AAACAAIAAAALAOL/AAACAAIAAAAOAOT/AAACAAIAAAAPAOH/AAAAAAIAAAAIAOf/AAACAAEAAADz//7/AAAAAAIAAADz/wEAAAAAAAIAAADz/wcAAAAAAAIAAAD0/wwAAAAAAAIAAAD2/w8AAAAAAAIAAAD+/w8AAAAAAAIAAAAJAAwAAAAAAAIAAAAMAA4AAAAAAAIAAAAUAA4AAAAAAAIAAAAZAAkAAAAAAAIAAAAYAAQAAAAAAAIAAAAaAAYAAAAAAAIAAAAaAP3/AAAAAAIAAAAcAPT/AAAAAAIAAAAZAO//AAAAAAIAAAAeAO//AAAAAAIAAAAhAPH/AAAAAAIAAAAnAO//AAAAAAIAAAAoAPL/AAAAAAIAAAAiAPr/AAAAAAIAAADy/wQAAAACAAIAAADy/wsAAAACAAIAAAD8/w8AAAACAAIAAAABAA0AAAACAAIAAAAFAA0AAAACAAIAAAAHAA8AAAACAAIAAAAPAA4AAAACAAIAAAAYAP//AAACAAIAAAAYAPn/AAACAAIAAAAcAPf/AAACAAIAAAAYAPT/AAACAAIAAAAbAPD/AAACAAIAAAAgAPb/AAACAAIAAAAkAPH/AAACAAIAAAAmAPL/AAACAAIAAADx//7/AAACAAIAAADz/+b/AAACAAIAAADx/+f/AAACAAIAAADz/+L/AAAAAAIAAADx/+T/AAAAAAIAAADv/+b/AAAAAAIAAADt/+D/AAAAAAIAAAAQAOb/AAACAAIAAAAYAOb/AAACAAIAAAAaAOf/AAAAAAIAAAAZAOP/AAAAAAIAAAAdAOP/AAAAAAIAAAAeAOX/AAAAAAIAAAAhAOb/AAACAAIAAADz//j/AAAAAAAAAADz//n/AAAAAAAAAADz//r/AAAAAAAAAADy//b/AAABAAAAAAD1/+f/AAABAAAAAAD7/+b/AAACAAIAAAAaAPP/AAACAAIAAAAaAPb/AAAAAAIAAAAYAPv/AAAAAAIAAAAaAAEAAAAAAAIAAAD2/woAAAAEAAAAAAD3/woAAAAFAAAAAAD4/woAAAAFAAAAAAD5/woAAAAFAAAAAAD6/woAAAAFAAAAAAD7/woAAAAFAAAAAAD8/woAAAAFAAAAAAD9/woAAAAFAAAAAAD+/woAAAAFAAAAAAD//woAAAAFAAAAAAAAAAoAAAAFAAAAAAABAAoAAAAFAAAAAAACAAoAAAAFAAAAAAADAAoAAAAFAAAAAAAEAAoAAAAFAAAAAAAFAAoAAAAFAAAAAAAGAAoAAAAFAAAAAAAHAAoAAAAFAAAAAAAIAAoAAAAFAAAAAAAJAAoAAAAFAAAAAAAKAAoAAAAFAAAAAAALAAoAAAAFAAAAAAAMAAoAAAAFAAAAAAANAAoAAAAFAAAAAAAOAAoAAAAFAAAAAAAPAAoAAAAFAAAAAAAQAAoAAAAFAAAAAAARAAoAAAAFAAAAAAASAAoAAAAFAAAAAAATAAoAAAAFAAAAAAAUAAoAAAAFAAAAAAAVAAoAAAAFAAAAAAAWAAoAAAAFAAAAAAAXAAoAAAAGAAAAAAA=")
+tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_b7n6c")
 
 [node name="Cow" parent="." instance=ExtResource("2_1qlcx")]
@@ -157,13 +166,13 @@ zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 9.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
 position = Vector2(137, 33)
 texture = ExtResource("8_qh2rc")
 
-[node name="TimerCount" type="Label" parent="CanvasLayer"]
+[node name="TimerCount" type="Label" parent="UI"]
 texture_filter = 1
 offset_left = 92.0
 offset_top = 68.0
@@ -176,12 +185,12 @@ horizontal_alignment = 1
 uppercase = true
 script = ExtResource("10_evuky")
 
-[node name="Timer" type="Timer" parent="CanvasLayer/TimerCount"]
-wait_time = 120.0
+[node name="Timer" type="Timer" parent="UI/TimerCount"]
+wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
 modulate = Color(0.654902, 0.941176, 0.439216, 1)
 self_modulate = Color(0.654902, 0.941176, 0.439216, 1)
 texture_filter = 1
@@ -193,3 +202,50 @@ offset_bottom = 46.0
 value = 100.0
 show_percentage = false
 script = ExtResource("8_o7h84")
+
+[node name="GameOverScreen" type="CanvasLayer" parent="."]
+
+[node name="Greyout" type="Sprite2D" parent="GameOverScreen"]
+self_modulate = Color(1, 1, 1, 0.8)
+position = Vector2(583, 334)
+scale = Vector2(5.9798, 6.46296)
+texture = ExtResource("12_cnyxr")
+
+[node name="Label" type="Label" parent="GameOverScreen"]
+offset_left = 408.0
+offset_top = 240.0
+offset_right = 4223.0
+offset_bottom = 870.0
+scale = Vector2(0.1, 0.1)
+text = "GAME OVER."
+label_settings = SubResource("LabelSettings_kqgg0")
+
+[node name="MenuButtons" type="VBoxContainer" parent="GameOverScreen"]
+offset_left = 494.0
+offset_top = 321.0
+offset_right = 694.0
+offset_bottom = 437.0
+
+[node name="Restart" type="Button" parent="GameOverScreen/MenuButtons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Quit")
+focus_next = NodePath("../Quit")
+focus_previous = NodePath("../Quit")
+icon = ExtResource("12_rfi6d")
+flat = true
+icon_alignment = 1
+
+[node name="Quit" type="Button" parent="GameOverScreen/MenuButtons"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_bottom = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Restart")
+icon = ExtResource("13_1fyps")
+flat = true
+icon_alignment = 1
+
+[connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="GameOverScreen/MenuButtons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverScreen/MenuButtons/Quit" to="." method="_on_quit_pressed"]

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=22 format=4 uid="uid://carnrxakdbdt1"]
+=======
+[gd_scene load_steps=15 format=4 uid="uid://carnrxakdbdt1"]
+>>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
@@ -8,12 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://i6xadqalsyek" path="res://Scenes/car.tscn" id="5_5h54n"]
 [ext_resource type="Script" path="res://Scripts/carPathFollow2d.gd" id="6_ddn3x"]
 [ext_resource type="Script" path="res://Scenes/progress_bar.gd" id="8_o7h84"]
+<<<<<<< Updated upstream
 [ext_resource type="Texture2D" uid="uid://b4vcvvdhpu1wc" path="res://Spritesheets/Health bar background.png" id="8_qh2rc"]
 [ext_resource type="FontFile" uid="uid://but2p26ts2ej8" path="res://Fonts/upheavtt.ttf" id="9_dwsap"]
 [ext_resource type="Script" path="res://Scenes/timer_count.gd" id="10_evuky"]
 [ext_resource type="Texture2D" uid="uid://dl7usg724mw4k" path="res://Spritesheets/blackout.png" id="12_cnyxr"]
 [ext_resource type="Texture2D" uid="uid://tjwaeexpb82i" path="res://Spritesheets/restart.png" id="12_rfi6d"]
 [ext_resource type="Texture2D" uid="uid://dtc4yxmx25qk3" path="res://Spritesheets/quit.png" id="13_1fyps"]
+=======
+[ext_resource type="Script" path="res://Scenes/sub_viewport.gd" id="9_8dg0m"]
+>>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_84jwf"]
 texture = ExtResource("1_1blsr")
@@ -102,6 +110,7 @@ _data = {
 }
 point_count = 5
 
+<<<<<<< Updated upstream
 [sub_resource type="LabelSettings" id="LabelSettings_hyxlb"]
 font = ExtResource("9_dwsap")
 font_size = 300
@@ -114,6 +123,8 @@ font_size = 700
 outline_size = 280
 outline_color = Color(0, 0, 0, 1)
 
+=======
+>>>>>>> Stashed changes
 [node name="Main" type="Node2D"]
 script = ExtResource("1_ggc00")
 
@@ -160,14 +171,18 @@ collision_mask = 2
 [node name="CameraRemoteTransform" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../CanvasLayer/SubViewportContainer/SubViewport/Camera2D")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(71, 15)
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(3, 3)
 position_smoothing_enabled = true
 position_smoothing_speed = 9.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+<<<<<<< Updated upstream
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
 position = Vector2(137, 33)
 texture = ExtResource("8_qh2rc")
@@ -193,16 +208,21 @@ autostart = true
 [node name="ProgressBar" type="ProgressBar" parent="UI"]
 modulate = Color(0.654902, 0.941176, 0.439216, 1)
 self_modulate = Color(0.654902, 0.941176, 0.439216, 1)
+=======
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
+>>>>>>> Stashed changes
 texture_filter = 1
-custom_minimum_size = Vector2(-19.01, 0)
-offset_left = 19.0
-offset_top = 20.0
-offset_right = 251.0
-offset_bottom = 46.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 201.0
+offset_bottom = 50.0
 value = 100.0
 show_percentage = false
 script = ExtResource("8_o7h84")
 
+<<<<<<< Updated upstream
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 
 [node name="Greyout" type="Sprite2D" parent="GameOverScreen"]
@@ -249,3 +269,29 @@ icon_alignment = 1
 [connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Quit" to="." method="_on_quit_pressed"]
+=======
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 8.0
+offset_right = 368.0
+offset_bottom = 425.0
+grow_horizontal = 0
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(100, 100)
+render_target_update_mode = 4
+script = ExtResource("9_8dg0m")
+
+[node name="Camera2D" type="Camera2D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+position = Vector2(71, 15)
+zoom = Vector2(0.4, 0.4)
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer/SubViewportContainer"]
+position = Vector2(-8, 0)
+points = PackedVector2Array(2, 0, 2, 104, 106, 104, 106, 0)
+closed = true
+>>>>>>> Stashed changes

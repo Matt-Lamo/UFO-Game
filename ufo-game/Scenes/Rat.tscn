@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1no4rib4857m"]
+
+[ext_resource type="Script" path="res://Scenes/rat.gd" id="1_cedt6"]
+[ext_resource type="Texture2D" uid="uid://s833tyd4ccs5" path="res://Spritesheets/Rat.png" id="1_yrxh4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4y2g"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34yrq"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwd65"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0owh"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ad4l5"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hwdq"]
+atlas = ExtResource("1_yrxh4")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xeuv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34yrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34yrq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwd65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwd65")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4y2g")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0owh")
+}],
+"loop": true,
+"name": &"Jumping",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ad4l5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hwdq")
+}],
+"loop": true,
+"name": &"Running",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqsfj"]
+size = Vector2(14, 11)
+
+[node name="Rat" type="Area2D"]
+script = ExtResource("1_cedt6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xeuv2")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_yqsfj")

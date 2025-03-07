@@ -1,27 +1,23 @@
 extends Area2D
 
-
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
-@export var speed = 0.1
+@export var speed = 100
 var isAbducted = false
 var collected = false
 var countMax = 50.0
 var count = countMax
 var playerPosition: Vector2
-var position_last_frame := Vector2()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = true
 
-#changes animation based on position along PathFollow2d
 
-	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if collected:
 		#PUT IN SIGNAL FOR UI UPDATING AND SCOREBOARD HERE
-		Global.collectedTable["Car"] += 1
+		Global.collectedTable["Rat"] += 1
 		print("COLLECTED")
 		print(Global.collectedTable)
 		queue_free()
@@ -35,7 +31,7 @@ func _process(delta: float) -> void:
 	else:
 		count = countMax
 		scale = Vector2(1,1)
-	
+		
 		
 
 func _on_area_entered(area: Area2D) -> void:

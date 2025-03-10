@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=3 uid="uid://caubigpigdmjl"]
+
+[ext_resource type="Script" path="res://Scripts/trash_can.gd" id="1_1cyc5"]
+[ext_resource type="Texture2D" uid="uid://d0e6pahmenvty" path="res://Spritesheets/Trash Can.png" id="1_nyvas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_um5wk"]
+atlas = ExtResource("1_nyvas")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehx5r"]
+atlas = ExtResource("1_nyvas")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h2mkw"]
+atlas = ExtResource("1_nyvas")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rc8xe"]
+atlas = ExtResource("1_nyvas")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jsw77"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_um5wk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehx5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h2mkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehx5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rc8xe")
+}],
+"loop": true,
+"name": &"Shaking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrgrf"]
+
+[node name="TrashCan" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_1cyc5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jsw77")
+animation = &"Shaking"
+autoplay = "Idle"
+frame_progress = 0.212972
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xrgrf")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

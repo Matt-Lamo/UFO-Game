@@ -7,7 +7,6 @@ var isAbducted = false
 var collected = false
 var countMax = 50.0
 var count = countMax
-var playerPosition: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = true
@@ -37,7 +36,6 @@ func _process(delta: float) -> void:
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Beam":
 		print("Entered Beam body") 
-		playerPosition = area.position
 		isAbducted = true
 		
 func _on_area_exited(area: Area2D) -> void:

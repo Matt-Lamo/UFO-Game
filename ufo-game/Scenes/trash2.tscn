@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1nyh8i276jg0"]
+
+[ext_resource type="Script" path="res://Scripts/trash.gd" id="1_astih"]
+[ext_resource type="Texture2D" uid="uid://dy4sumt2enyy3" path="res://Spritesheets/Trash 2.png" id="2_6unlg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f5smt"]
+size = Vector2(16, 16)
+
+[node name="Trash" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_astih")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6unlg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_f5smt")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

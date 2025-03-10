@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://c1no4rib4857m"]
 
-[ext_resource type="Script" path="res://Scenes/rat.gd" id="1_cedt6"]
+[ext_resource type="Script" path="res://Scripts/rat.gd" id="1_cedt6"]
 [ext_resource type="Texture2D" uid="uid://s833tyd4ccs5" path="res://Spritesheets/Rat.png" id="1_yrxh4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4y2g"]
@@ -97,6 +97,8 @@ animations = [{
 size = Vector2(14, 11)
 
 [node name="Rat" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
 script = ExtResource("1_cedt6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -107,3 +109,6 @@ autoplay = "Idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_yqsfj")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://b6l28rh15401j"]
+
+[ext_resource type="Script" path="res://Scenes/person_non_hostile.gd" id="1_vewj6"]
+[ext_resource type="Texture2D" uid="uid://bdv3npwd5mrt6" path="res://Spritesheets/NPC 1.png" id="2_nummy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrc8m"]
+atlas = ExtResource("2_nummy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qehf"]
+atlas = ExtResource("2_nummy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgjgr"]
+atlas = ExtResource("2_nummy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ego2"]
+atlas = ExtResource("2_nummy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scq8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rrc8m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qehf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgjgr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ego2")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgycc"]
+size = Vector2(18, 29)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_vewj6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_scq8b")
+animation = &"Idle"
+frame = 2
+frame_progress = 0.216037
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_lgycc")

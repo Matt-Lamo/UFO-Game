@@ -26,9 +26,7 @@ func _process(delta: float) -> void:
 		if count !=0:
 			print(count)
 			count -= 1.0
-			
 			position.y -= (16/countMax)
-			scale = Vector2(1*(float(count/countMax)), 1*(float(count/countMax)))
 		else:
 			collected = true
 	else:

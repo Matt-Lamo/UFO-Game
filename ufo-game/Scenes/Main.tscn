@@ -211,6 +211,9 @@ tile_set = SubResource("TileSet_b7n6c")
 [node name="Cow" parent="." instance=ExtResource("2_1qlcx")]
 position = Vector2(24, 10)
 
+[node name="TrashCan2" parent="." instance=ExtResource("5_1ibmj")]
+position = Vector2(208, -372)
+
 [node name="TrashCan" parent="." instance=ExtResource("5_1ibmj")]
 position = Vector2(130, -148)
 
@@ -331,9 +334,6 @@ focus_previous = NodePath("../Restart")
 icon = ExtResource("13_1fyps")
 flat = true
 icon_alignment = 1
-
-[node name="TrashCan2" parent="." instance=ExtResource("5_1ibmj")]
-position = Vector2(208, -372)
 
 [connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Restart" to="." method="_on_restart_pressed"]

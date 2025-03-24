@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b6l28rh15401j"]
 
-[ext_resource type="Script" path="res://Scenes/person_non_hostile.gd" id="1_vewj6"]
+[ext_resource type="Script" path="res://Scripts/person_non_hostile.gd" id="1_vewj6"]
 [ext_resource type="Texture2D" uid="uid://bdv3npwd5mrt6" path="res://Spritesheets/NPC 1.png" id="2_nummy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrc8m"]

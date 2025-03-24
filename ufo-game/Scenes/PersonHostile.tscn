@@ -1,3 +1,46 @@
-[gd_scene format=3 uid="uid://c05nx5lanc1en"]
+[gd_scene load_steps=7 format=3 uid="uid://c05nx5lanc1en"]
+
+[ext_resource type="Texture2D" uid="uid://bbkfkuta7ym15" path="res://Spritesheets/NPC Hostile.png" id="1_b15yn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uidas"]
+atlas = ExtResource("1_b15yn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww81e"]
+atlas = ExtResource("1_b15yn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_55blc"]
+atlas = ExtResource("1_b15yn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcdem"]
+atlas = ExtResource("1_b15yn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gt2jg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uidas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww81e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_55blc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcdem")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_gt2jg")
+frame = 3
+frame_progress = 0.666875

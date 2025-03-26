@@ -15,6 +15,8 @@ func _shoot_at_player() -> void:
 	# if player is in radius of n pixels:
 	# 	play shooting animation
 	# 	fire projectile at player
+	
+	
 	# 	if player is hit:
 	#		playerHealth -= 50
 	#	else:

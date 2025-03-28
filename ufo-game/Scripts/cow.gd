@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		Global.collectedTable["Cow"] += 1
 		print("COLLECTED")
 		print(Global.collectedTable)
-		randint = rng.randi_range(0,4)
+		randint = rng.randi_range(0,0)
 		if randint == 0:
 			slowEffect.emit()
 		queue_free()

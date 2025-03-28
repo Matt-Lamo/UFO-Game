@@ -7,9 +7,13 @@ var isAbducted = false
 var collected = false
 var countMax = 50.0
 var count = countMax
+var rng = RandomNumberGenerator.new()
+var randint = 0
+signal slowEffect
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = true
+	rng.randomize()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +23,9 @@ func _process(delta: float) -> void:
 		Global.collectedTable["Cow"] += 1
 		print("COLLECTED")
 		print(Global.collectedTable)
+		randint = rng.randi_range(0,4)
+		if randint == 0:
+			slowEffect.emit()
 		queue_free()
 	if isAbducted:
 		if count !=0:

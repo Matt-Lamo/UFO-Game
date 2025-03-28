@@ -34,8 +34,6 @@ func random_movement() -> void:
 		
 		randx = randf_range(-4,4)
 		randy = randf_range(-4,4)
-		print(randx)
-		print(randy)
 		newPosition = Vector2(position.x+randx,position.y+randy)
 		
 	position = position.move_toward(newPosition, speed)

@@ -13,6 +13,7 @@ var rng = RandomNumberGenerator.new()
 @onready var newPosition = Vector2(position.x+randf_range(-8,8),position.y+randf_range(-8,8))
 var randx = 0
 var randy = 0
+var randi = 0
 func wait(seconds:float) -> void:
 	await get_tree().create_timer(seconds).timeout
 	
@@ -31,9 +32,16 @@ func update_animation() -> void:
 func random_movement() -> void:
 	animatedSprite.play("Running")
 	if position.distance_to(newPosition)<1.0:
-		
-		randx = randf_range(-4,4)
-		randy = randf_range(-4,4)
+		randi = randi_range(0,1)
+		if randi == 0:
+			randx = randi_range(-4,-8)
+		else:
+			randx = randi_range(4,8)
+		randi = randi_range(0,1)
+		if randi == 0:
+			randy = randi_range(-4,-8)
+		else:
+			randy = randi_range(4,8)
 		newPosition = Vector2(position.x+randx,position.y+randy)
 		
 	position = position.move_toward(newPosition, speed)

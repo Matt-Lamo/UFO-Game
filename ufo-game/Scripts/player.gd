@@ -16,9 +16,9 @@ func get_input():
 		"right":
 			pass
 		"up":
-			animatedSprite.animation.play("Up")
+			animatedSprite.animation.set("Up")
 		"down":
-			animatedSprite.animation.play("Down")
+			animatedSprite.animation.set("Down")
 			
 	velocity = input_direction * speed
 

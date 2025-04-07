@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=34 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dtc4yxmx25qk3" path="res://Spritesheets/quit.png" id="13_1fyps"]
 [ext_resource type="Script" path="res://Scenes/perks.gd" id="14_t06ia"]
 [ext_resource type="Texture2D" uid="uid://bu47l6yfhwb1d" path="res://Spritesheets/Slow UI.png" id="14_t507h"]
+[ext_resource type="Script" path="res://Scenes/slowUI.gd" id="16_qomip"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fuafe"]
 texture = ExtResource("1_1blsr")
@@ -351,6 +352,7 @@ position = Vector2(53, 124)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_eu0bb")
 animation = &"Countdown"
+script = ExtResource("16_qomip")
 
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
@@ -396,6 +398,8 @@ icon = ExtResource("13_1fyps")
 flat = true
 icon_alignment = 1
 
+[connection signal="slowEffect" from="Cow" to="Player" method="_on_cow_slow_effect"]
+[connection signal="slowEffect" from="Cow" to="UI/Perks/Slow" method="_on_cow_slow_effect"]
 [connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Quit" to="." method="_on_quit_pressed"]

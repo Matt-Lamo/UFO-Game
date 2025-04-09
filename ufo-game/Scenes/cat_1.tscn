@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://pk1iodlc18i3"]
+
+[ext_resource type="Texture2D" uid="uid://dsky3m3ivxwam" path="res://Spritesheets/Cat.png" id="1_i0lhv"]
+[ext_resource type="Script" path="res://Scripts/cat_1.gd" id="1_t33n8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwrt2"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ww37"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n4ap"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om0ft"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnqvg"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ndgm"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rrs4"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_py0iy"]
+atlas = ExtResource("1_i0lhv")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1jorl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwrt2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ww37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n4ap")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om0ft")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnqvg")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ndgm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rrs4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_py0iy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rrs4")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w085r"]
+size = Vector2(16, 15)
+
+[node name="Cat1" type="Area2D"]
+script = ExtResource("1_t33n8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1jorl")
+animation = &"Walking"
+autoplay = "Idle"
+frame = 3
+frame_progress = 0.45534
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_w085r")

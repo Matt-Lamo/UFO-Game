@@ -14,50 +14,18 @@ var rng = RandomNumberGenerator.new()
 var randx = 0
 var randy = 0
 var randi = 0
-func wait(seconds:float) -> void:
-	await get_tree().create_timer(seconds).timeout
-	
-	
-func _ready() -> void:
-	monitoring = true
-	animatedSprite.play("Idle")
-	rng.randomize()
-	
-func update_animation() -> void:
-	if randx > 0:
-		animatedSprite.flip_h = true
-	else:
-		animatedSprite.flip_h = false
-	
-func random_movement() -> void:
-	animatedSprite.play("Running")
-	if position.distance_to(newPosition)<1.0:
-		randi = randi_range(0,1)
-		if randi == 0:
-			randx = randi_range(-4,-8)
-		else:
-			randx = randi_range(4,8)
-		randi = randi_range(0,1)
-		if randi == 0:
-			randy = randi_range(-4,-8)
-		else:
-			randy = randi_range(4,8)
-		newPosition = Vector2(position.x+randx,position.y+randy)
-		
-	position = position.move_toward(newPosition, speed)
-	
-	
-func _physics_process(delta: float) -> void:
-	random_movement()
-	
-	
+var randint = 0
+signal fastEffect
+
 func _process(delta: float) -> void:
-	update_animation()
 	if collected:
 		#PUT IN SIGNAL FOR UI UPDATING AND SCOREBOARD HERE
-		Global.collectedTable["Rat"] += 1
+		Global.collectedTable["Cat"] += 1
 		print("COLLECTED")
 		print(Global.collectedTable)
+		randint = rng.randi_range(0,0) #ADJUST PERCENT CHANGE
+		if randint == 0:
+			fastEffect.emit() 
 		queue_free()
 	if isAbducted:
 		if count !=0:
@@ -70,18 +38,12 @@ func _process(delta: float) -> void:
 		count = countMax
 		scale = Vector2(1,1)
 
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Beam":
 		print("Entered Beam body") 
 		isAbducted = true
 		
-		
 func _on_area_exited(area: Area2D) -> void:
 	if area.name == "Beam":
 		print("Left Beam body") 
 		isAbducted = false
-
-
-func _on_timer_timeout() -> void:
-	moveCounter = true

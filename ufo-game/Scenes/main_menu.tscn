@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=4 uid="uid://b46oqjb6gqssy"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_3q4ck"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_3q4ck"]
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_ojrm7"]
 [ext_resource type="Texture2D" uid="uid://biht4vl1cs53t" path="res://Tilemaps/Foreground Tilesheet.png" id="2_gou0v"]
 [ext_resource type="Texture2D" uid="uid://dl7usg724mw4k" path="res://Spritesheets/blackout.png" id="3_y4dom"]

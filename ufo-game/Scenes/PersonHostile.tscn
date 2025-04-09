@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://c05nx5lanc1en"]
 
+[ext_resource type="Script" path="res://Scripts/person_hostile.gd" id="1_a3g64"]
 [ext_resource type="Texture2D" uid="uid://bbkfkuta7ym15" path="res://Spritesheets/NPC Hostile.png" id="1_b15yn"]
-[ext_resource type="Script" path="res://Scenes/SoldierArea2D.gd" id="1_sqcev"]
 [ext_resource type="Script" path="res://Scenes/soldiers_view.gd" id="3_ja30c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uidas"]
@@ -49,7 +49,7 @@ radius = 154.117
 [node name="Area2D" type="Area2D"]
 collision_layer = 4
 collision_mask = 10
-script = ExtResource("1_sqcev")
+script = ExtResource("1_a3g64")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_gt2jg")
@@ -66,4 +66,5 @@ script = ExtResource("3_ja30c")
 [node name="LineOfSight" type="CollisionShape2D" parent="SoldiersView"]
 shape = SubResource("CircleShape2D_r8ipq")
 
-[connection signal="area_entered" from="SoldiersView" to="." method="_on_soldiers_view_area_entered"]
+[connection signal="body_entered" from="SoldiersView" to="." method="_on_soldiers_view_body_entered"]
+[connection signal="body_exited" from="SoldiersView" to="." method="_on_soldiers_view_body_exited"]

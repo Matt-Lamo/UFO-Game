@@ -5,6 +5,7 @@ extends Area2D
 @export var speed = 100
 var isAbducted = false
 var collected = false
+var attackPlayer = false
 var countMax = 50.0
 var count = countMax
 # Called when the node enters the scene tree for the first time.
@@ -46,10 +47,19 @@ func _on_area_exited(area: Area2D) -> void:
 func _shoot_at_player() -> void:
 	# Algorithm:
 	# if player is in radius of n pixels:
+	if attackPlayer: #  When players enters radius of hostile
 	# 	play shooting animation
-	# 	fire projectile at player
-	# 	if player is hit:
+	#  timer window, detected you (exclamation point)
+		while attackPlayer:
+	#  Once ! is full, player takes damage
 	#		playerHealth -= 50
+			Global.hp -= 50
 	#	else:
-	#		projectile disappears if it collides with anything
 	pass
+
+
+func _on_soldiers_view_body_entered(body: Node2D) -> void:
+	attackPlayer = true
+
+func _on_soldiers_view_body_exited(body: Node2D) -> void:
+	attackPlayer = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=35 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
 [ext_resource type="PackedScene" uid="uid://bcb5hhvyf5gfw" path="res://Scenes/cow.tscn" id="2_1qlcx"]
 [ext_resource type="Texture2D" uid="uid://biht4vl1cs53t" path="res://Tilemaps/Foreground Tilesheet.png" id="2_kknfg"]
 [ext_resource type="PackedScene" uid="uid://d37o6a6e82mki" path="res://Scenes/player.tscn" id="2_yl81k"]
+[ext_resource type="PackedScene" uid="uid://pk1iodlc18i3" path="res://Scenes/cat_1.tscn" id="4_noblk"]
 [ext_resource type="PackedScene" uid="uid://caubigpigdmjl" path="res://Scenes/trash_can.tscn" id="5_1ibmj"]
 [ext_resource type="PackedScene" uid="uid://i6xadqalsyek" path="res://Scenes/car.tscn" id="5_5h54n"]
 [ext_resource type="PackedScene" uid="uid://c1no4rib4857m" path="res://Scenes/Rat.tscn" id="6_7t200"]
@@ -261,6 +262,11 @@ position = Vector2(72, 22)
 tile_map_data = PackedByteArray("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")
 tile_set = SubResource("TileSet_on358")
 
+[node name="Cat1" parent="." instance=ExtResource("4_noblk")]
+position = Vector2(227, -132)
+collision_layer = 4
+collision_mask = 10
+
 [node name="Cow" parent="." instance=ExtResource("2_1qlcx")]
 position = Vector2(24, 10)
 
@@ -398,6 +404,9 @@ icon = ExtResource("13_1fyps")
 flat = true
 icon_alignment = 1
 
+[connection signal="area_entered" from="Cat1" to="Cat1" method="_on_area_entered"]
+[connection signal="area_exited" from="Cat1" to="Cat1" method="_on_area_exited"]
+[connection signal="fastEffect" from="Cat1" to="Player" method="_on_cat_1_fast_effect"]
 [connection signal="slowEffect" from="Cow" to="Player" method="_on_cow_slow_effect"]
 [connection signal="slowEffect" from="Cow" to="UI/Perks/Slow" method="_on_cow_slow_effect"]
 [connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]

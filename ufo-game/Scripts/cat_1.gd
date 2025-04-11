@@ -17,6 +17,10 @@ var randi = 0
 var randint = 0
 signal fastEffect
 
+func _ready() -> void:
+	animatedSprite.play("Idle")
+	
+	
 func _process(delta: float) -> void:
 	if collected:
 		#PUT IN SIGNAL FOR UI UPDATING AND SCOREBOARD HERE

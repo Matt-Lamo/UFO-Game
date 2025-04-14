@@ -3,9 +3,12 @@ extends Area2D
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
 @export var speed = 100
+var timeToFullAlert = 4/5
 var isAbducted = false
 var collected = false
 var attackPlayer = false
+var seesPlayer = false
+var damageTimer = Timer.new()
 var countMax = 50.0
 var count = countMax
 # Called when the node enters the scene tree for the first time.
@@ -47,19 +50,24 @@ func _on_area_exited(area: Area2D) -> void:
 func _shoot_at_player() -> void:
 	# Algorithm:
 	# if player is in radius of n pixels:
-	if attackPlayer: #  When players enters radius of hostile
+	while seesPlayer: #  When players enters radius of hostile
+		add_child(timeToFullAlert)
+		damageTimer.start()
 	# 	play shooting animation
 	#  timer window, detected you (exclamation point)
 		while attackPlayer:
-	#  Once ! is full, player takes damage
 	#		playerHealth -= 50
-			Global.hp -= 50
+			Global.hp -= 50 
 	#	else:
 	pass
 
 
 func _on_soldiers_view_body_entered(body: Node2D) -> void:
-	attackPlayer = true
+	seesPlayer = true
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
-	attackPlayer = false
+	seesPlayer = false
+
+
+func _on_animated_sprite_2d_2_animation_finished() -> void:
+	attackPlayer = true

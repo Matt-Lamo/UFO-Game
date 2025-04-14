@@ -3,10 +3,13 @@ extends CharacterBody2D
 @export var speed = 225
 @export var baseSpeed = 225
 @onready var animatedSprite = $AnimatedSprite2D
-@onready var effects = {"slow": 0,"healthup":0}
+@onready var effects = {"slow": 0,"healthup":0,"fast":0}
 var slowTimer = Timer.new() #Do not modify, initializes Timer node
+var fastTimer = Timer.new() #Do not modify, initializes Timer Node
 @export var slowSpeed = 75 #Value subtracted from player speed, speed reduction
 @export var slowTime = 5 #time effect lasts
+@export var fastSpeed = 75 #Value added to player speed, speed increase
+@export var fastTime = 5 #time effect lasts
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -48,4 +51,19 @@ func _on_slow_timer_timeout() -> void:
 	effects["slow"] = 0
 	speed = baseSpeed
 	slowTimer.queue_free()
-	
+
+
+func _on_cat_1_fast_effect() -> void:
+	if effects["fast"] == 0:
+		print("fast effect applied.")
+		effects["fast"] = 1
+		add_child(fastTimer)
+		fastTimer.wait_time = fastTime
+		fastTimer.start()
+		speed += fastSpeed
+		fastTimer.timeout.connect(_on_fast_timer_timeout)
+
+func _on_fast_timer_timeout() -> void:
+	effects["fast"] = 0
+	speed = baseSpeed
+	fastTimer.queue_free()

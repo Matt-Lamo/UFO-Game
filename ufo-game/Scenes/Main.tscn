@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=43 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Scripts/slowUI.gd" id="16_qomip"]
 [ext_resource type="Texture2D" uid="uid://b7smyaws8wmvy" path="res://Spritesheets/fast UI.png" id="18_hesaf"]
 [ext_resource type="Script" path="res://Scenes/fastUI.gd" id="19_hlxr3"]
+[ext_resource type="PackedScene" uid="uid://c05nx5lanc1en" path="res://Scenes/PersonHostile.tscn" id="23_7nnqe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrdmw"]
 texture = ExtResource("1_1blsr")
@@ -448,6 +449,9 @@ focus_previous = NodePath("../Restart")
 icon = ExtResource("13_1fyps")
 flat = true
 icon_alignment = 1
+
+[node name="Area2D" parent="." instance=ExtResource("23_7nnqe")]
+position = Vector2(181, -183)
 
 [connection signal="area_entered" from="Cat1" to="Cat1" method="_on_area_entered"]
 [connection signal="area_exited" from="Cat1" to="Cat1" method="_on_area_exited"]

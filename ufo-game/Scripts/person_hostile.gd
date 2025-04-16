@@ -63,7 +63,7 @@ func _on_soldiers_view_body_entered(body: Node2D) -> void:
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
-	damageTimer.queue_free() 
+	
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	attackPlayer = true

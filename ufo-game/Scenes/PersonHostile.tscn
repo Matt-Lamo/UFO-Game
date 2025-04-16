@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/person_hostile.gd" id="1_a3g64"]
 [ext_resource type="Texture2D" uid="uid://bbkfkuta7ym15" path="res://Spritesheets/NPC Hostile.png" id="1_b15yn"]
-[ext_resource type="Script" path="res://Scenes/soldiers_view.gd" id="3_ja30c"]
+[ext_resource type="Script" path="res://Scripts/soldiers_view.gd" id="3_ja30c"]
 [ext_resource type="Texture2D" uid="uid://dbtj6aa1e03tw" path="res://Spritesheets/alert-sheet.png" id="4_qdi3g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uidas"]

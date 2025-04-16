@@ -51,23 +51,24 @@ func _shoot_at_player() -> void:
 	# Algorithm:
 	# if player is in radius of n pixels:
 	while seesPlayer: #  When players enters radius of hostile
-		add_child(timeToFullAlert)
+		add_child(damageTimer)
+		damageTimer.wait_time = timeToFullAlert
 		damageTimer.start()
+		damageTimer.timeout.connect(_on_damage_timer_timeout)			
 	# 	play shooting animation
 	#  timer window, detected you (exclamation point)
-		while attackPlayer:
-	#		playerHealth -= 50
-			Global.hp -= 50 
-	#	else:
-	pass
-
 
 func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	seesPlayer = true
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
-
+	damageTimer.queue_free() 
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	attackPlayer = true
+	
+func _on_damage_timer_timeout() -> void:
+	while seesPlayer and attackPlayer:
+		Global.hp -= 10
+	

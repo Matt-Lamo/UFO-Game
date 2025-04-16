@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://carnrxakdbdt1"]
+[gd_scene load_steps=42 format=4 uid="uid://carnrxakdbdt1"]
 
 [ext_resource type="Texture2D" uid="uid://b07ikfassxalq" path="res://Tilemaps/UFO Tilesheet.png" id="1_1blsr"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_ggc00"]
@@ -17,9 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://dl7usg724mw4k" path="res://Spritesheets/blackout.png" id="12_cnyxr"]
 [ext_resource type="Texture2D" uid="uid://tjwaeexpb82i" path="res://Spritesheets/restart.png" id="12_rfi6d"]
 [ext_resource type="Texture2D" uid="uid://dtc4yxmx25qk3" path="res://Spritesheets/quit.png" id="13_1fyps"]
-[ext_resource type="Script" path="res://Scenes/perks.gd" id="14_t06ia"]
+[ext_resource type="Script" path="res://Scripts/perks.gd" id="14_t06ia"]
 [ext_resource type="Texture2D" uid="uid://bu47l6yfhwb1d" path="res://Spritesheets/Slow UI.png" id="14_t507h"]
-[ext_resource type="Script" path="res://Scenes/slowUI.gd" id="16_qomip"]
+[ext_resource type="Script" path="res://Scripts/slowUI.gd" id="16_qomip"]
+[ext_resource type="Texture2D" uid="uid://b7smyaws8wmvy" path="res://Spritesheets/fast UI.png" id="18_hesaf"]
+[ext_resource type="Script" path="res://Scenes/fastUI.gd" id="19_hlxr3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lrdmw"]
 texture = ExtResource("1_1blsr")
@@ -211,10 +213,6 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("14_t507h")
 region = Rect2(32, 0, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7q8o"]
-atlas = ExtResource("14_t507h")
-region = Rect2(0, 0, 32, 32)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_eu0bb"]
 animations = [{
 "frames": [{
@@ -232,13 +230,53 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8mq8f")
+}],
+"loop": false,
+"name": &"Countdown",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0wkg"]
+atlas = ExtResource("18_hesaf")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epkm1"]
+atlas = ExtResource("18_hesaf")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6fi7"]
+atlas = ExtResource("18_hesaf")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlisc"]
+atlas = ExtResource("18_hesaf")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5vte"]
+atlas = ExtResource("18_hesaf")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k53e3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0wkg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x7q8o")
+"texture": SubResource("AtlasTexture_epkm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6fi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlisc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5vte")
 }],
-"loop": true,
+"loop": false,
 "name": &"Countdown",
-"speed": 5.0
+"speed": 1.0
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kqgg0"]
@@ -360,6 +398,13 @@ sprite_frames = SubResource("SpriteFrames_eu0bb")
 animation = &"Countdown"
 script = ExtResource("16_qomip")
 
+[node name="Fast" type="AnimatedSprite2D" parent="UI/Perks"]
+position = Vector2(53, 124)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_k53e3")
+animation = &"Countdown"
+script = ExtResource("19_hlxr3")
+
 [node name="GameOverScreen" type="CanvasLayer" parent="."]
 visible = false
 
@@ -409,6 +454,10 @@ icon_alignment = 1
 [connection signal="fastEffect" from="Cat1" to="Player" method="_on_cat_1_fast_effect"]
 [connection signal="slowEffect" from="Cow" to="Player" method="_on_cow_slow_effect"]
 [connection signal="slowEffect" from="Cow" to="UI/Perks/Slow" method="_on_cow_slow_effect"]
+[connection signal="fastUI" from="Player" to="UI/Perks/Fast" method="_on_player_fast_ui"]
+[connection signal="slowUI" from="Player" to="UI/Perks/Slow" method="_on_player_slow_ui"]
 [connection signal="timeout" from="UI/TimerCount/Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="UI/Perks/Slow" to="UI/Perks/Slow" method="_on_animation_finished"]
+[connection signal="animation_finished" from="UI/Perks/Fast" to="UI/Perks/Fast" method="_on_animation_finished"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="GameOverScreen/MenuButtons/Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://ca8lc72iqglvs"]
+
+[ext_resource type="Script" path="res://Scripts/mushroom_1.gd" id="1_upsyf"]
+[ext_resource type="Texture2D" uid="uid://s1mnc3qqswwk" path="res://Spritesheets/Mushroom.png" id="2_jsxnl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olik5"]
+atlas = ExtResource("2_jsxnl")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5oxvu"]
+atlas = ExtResource("2_jsxnl")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c1xwb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5oxvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l2f46"]
+
+[node name="Mushroom1" type="Area2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_upsyf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_c1xwb")
+frame_progress = 0.334143
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_l2f46")

@@ -10,6 +10,8 @@ var fastTimer = Timer.new() #Do not modify, initializes Timer Node
 @export var slowTime = 5 #time effect lasts
 @export var fastSpeed = 75 #Value added to player speed, speed increase
 @export var fastTime = 5 #time effect lasts
+signal slowUI
+signal fastUI
 
 func get_input():
 	var input_direction = Input.get_vector("left", "right", "up", "down")
@@ -38,6 +40,7 @@ func _physics_process(delta):
 
 
 func _on_cow_slow_effect() -> void:
+	slowUI.emit()
 	if effects["slow"] == 0:
 		print("slow effect applied.")
 		effects["slow"] = 1
@@ -54,6 +57,7 @@ func _on_slow_timer_timeout() -> void:
 
 
 func _on_cat_1_fast_effect() -> void:
+	fastUI.emit()
 	if effects["fast"] == 0:
 		print("fast effect applied.")
 		effects["fast"] = 1

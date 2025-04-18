@@ -14,6 +14,8 @@ var count = countMax
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = true
+	$AnimatedSprite2D.play("default")
+	$AnimatedSprite2D2.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -60,10 +62,12 @@ func _shoot_at_player() -> void:
 
 func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	seesPlayer = true
+	$AnimatedSprite2D2.visible = true
 	$AnimatedSprite2D2.play("alertAnimation")
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
+	$AnimatedSprite2D2.visible = false
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	attackPlayer = true

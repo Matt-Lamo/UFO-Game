@@ -60,10 +60,10 @@ func _shoot_at_player() -> void:
 
 func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	seesPlayer = true
+	$AnimatedSprite2D2.play("alertAnimation")
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
-	
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	attackPlayer = true

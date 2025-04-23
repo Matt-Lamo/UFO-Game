@@ -315,6 +315,9 @@ position = Vector2(208, -372)
 [node name="TrashCan" parent="." instance=ExtResource("5_1ibmj")]
 position = Vector2(130, -148)
 
+[node name="Area2D" parent="." instance=ExtResource("23_7nnqe")]
+position = Vector2(181, -183)
+
 [node name="Rat" parent="." instance=ExtResource("6_7t200")]
 position = Vector2(135, -43)
 
@@ -449,9 +452,6 @@ focus_previous = NodePath("../Restart")
 icon = ExtResource("13_1fyps")
 flat = true
 icon_alignment = 1
-
-[node name="Area2D" parent="." instance=ExtResource("23_7nnqe")]
-position = Vector2(181, -183)
 
 [connection signal="area_entered" from="Cat1" to="Cat1" method="_on_area_entered"]
 [connection signal="area_exited" from="Cat1" to="Cat1" method="_on_area_exited"]

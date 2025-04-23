@@ -64,6 +64,8 @@ func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	seesPlayer = true
 	$AnimatedSprite2D2.visible = true
 	$AnimatedSprite2D2.play("alertAnimation")
+	while seesPlayer and attackPlayer:
+		Global.hp -= 10
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false

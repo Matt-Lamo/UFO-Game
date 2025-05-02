@@ -63,5 +63,5 @@ func _on_animated_sprite_2d_2_animation_finished() -> void:
 
 func _on_health_timer_timeout() -> void:
 	if seesPlayer and attackPlayer:
-		Global.hp -= 0
+		Global.hp -= 10
 		Global.hp = clamp(Global.hp, -10, 100)

@@ -8,16 +8,17 @@ var isAbducted = false
 var collected = false
 var attackPlayer = false
 var seesPlayer = false
-var damageTimer = Timer.new()
+@onready var healthTimer = $Timer
 var countMax = 50.0
 var count = countMax
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	monitoring = true
+	healthTimer.start()
+	healthTimer.timeout.connect(_on_health_timer_timeout)
 	$AnimatedSprite2D.play("default")
 	$AnimatedSprite2D2.visible = false
-
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if collected:
@@ -37,8 +38,6 @@ func _process(delta: float) -> void:
 		count = countMax
 		scale = Vector2(1,1)
 		
-		
-
 func _on_area_entered(area: Area2D) -> void:
 	if area.name == "Beam":
 		print("Entered Beam body") 
@@ -49,23 +48,11 @@ func _on_area_exited(area: Area2D) -> void:
 		print("Left Beam body") 
 		isAbducted = false
 
-func _shoot_at_player() -> void:
-	# Algorithm:
-	# if player is in radius of n pixels:
-	while seesPlayer: #  When players enters radius of hostile
-		add_child(damageTimer)
-		damageTimer.wait_time = timeToFullAlert
-		damageTimer.start()
-		damageTimer.timeout.connect(_on_damage_timer_timeout)			
-	# 	play shooting animation
-	#  timer window, detected you (exclamation point)
-
 func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	seesPlayer = true
 	$AnimatedSprite2D2.visible = true
 	$AnimatedSprite2D2.play("alertAnimation")
-	while seesPlayer and attackPlayer:
-		Global.hp -= 10
+	
 
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
@@ -73,8 +60,8 @@ func _on_soldiers_view_body_exited(body: Node2D) -> void:
 
 func _on_animated_sprite_2d_2_animation_finished() -> void:
 	attackPlayer = true
-	
-func _on_damage_timer_timeout() -> void:
-	while seesPlayer and attackPlayer:
-		Global.hp -= 10
-	
+
+func _on_health_timer_timeout() -> void:
+	if seesPlayer and attackPlayer:
+		Global.hp -= 0
+		Global.hp = clamp(Global.hp, -10, 100)

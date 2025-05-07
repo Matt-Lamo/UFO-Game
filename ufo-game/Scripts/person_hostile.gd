@@ -3,6 +3,7 @@ extends Area2D
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
 @export var speed = 100
+
 var timeToFullAlert = 4/5
 var isAbducted = false
 var collected = false

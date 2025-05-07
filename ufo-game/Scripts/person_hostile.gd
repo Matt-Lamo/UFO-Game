@@ -2,6 +2,7 @@ extends Area2D
 # Copied and pasted from cow.
 @onready var animatedSprite = $AnimatedSprite2D
 @onready var collisionShape = $CollisionShape2D
+@onready var asp = $AudioStreamPlayer
 @export var speed = 100
 
 var timeToFullAlert = 4/5
@@ -54,7 +55,6 @@ func _on_soldiers_view_body_entered(body: Node2D) -> void:
 	$AnimatedSprite2D2.visible = true
 	$AnimatedSprite2D2.play("alertAnimation")
 	
-
 func _on_soldiers_view_body_exited(body: Node2D) -> void:
 	seesPlayer = false
 	$AnimatedSprite2D2.visible = false
@@ -64,5 +64,12 @@ func _on_animated_sprite_2d_2_animation_finished() -> void:
 
 func _on_health_timer_timeout() -> void:
 	if seesPlayer and attackPlayer:
+		#Play damage sound
+		_playsound()
 		Global.hp -= 10
 		Global.hp = clamp(Global.hp, -10, 100)
+
+func _playsound() ->void:
+	var loadedSong = load("res://Sounds/SFX/gun-shot-1-7069.mp3")
+	asp.stream = loadedSong
+	asp.play()

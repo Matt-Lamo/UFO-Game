@@ -118,6 +118,8 @@ animation = &"alertAnimation"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
 [connection signal="body_entered" from="SoldiersView" to="." method="_on_soldiers_view_body_entered"]
